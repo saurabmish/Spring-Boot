@@ -8,6 +8,10 @@ RESTful API Development & Testing Using Spring Microservices
 
   `brew install openjdk`
 
++ Install [Insomnia REST client][1]
+
+  `brew cask install insomnia`
+
 + For the system Java wrappers to find this JDK, symlink it with Java in `Library/`
 
   `sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk`
@@ -16,7 +20,7 @@ RESTful API Development & Testing Using Spring Microservices
 
   `export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home"`
 
-+ Bootstrap application with [Spring Initializr][1]
++ Bootstrap application with [Spring Initializr][2]
 
 + Technical Specifications:
 
@@ -32,5 +36,17 @@ RESTful API Development & Testing Using Spring Microservices
 
     + Dependencies: Spring Web
 
+## Execution
 
-[1]: https://start.spring.io/
++ Execute `Application.java`
+
++ Send a JSON *POST* request to endpoint `api/v1/person`:
+
+  ```
+  {
+      "name": "Saurabh Mishra"
+  }
+  ```
+
+[1]: https://github.com/Kong/insomnia
+[2]: https://start.spring.io/
