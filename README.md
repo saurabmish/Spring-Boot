@@ -42,12 +42,17 @@ RESTful API Development & Testing Using Spring Microservices
 
 + Execute `Application.java`
 
-+ Send a JSON *POST* request to endpoint `api/v1/person`:
++ Send multiple JSON *POST* requests (using `curl`) to endpoint `api/v1/person`:
+
+  `./src/test/java/com/spring/app/post_people.sh`
+
++ Verify *POST* by sending a *GET* request to endpoint `api/v1/person`
 
   ```
-  {
-      "name": "Saurabh Mishra"
-  }
+  curl --include \
+      --header 'Content-Type: application/json' 'Accept: application/json' \
+      --request GET \
+      http://127.0.0.1:8080/api/v1/person
   ```
 
 [1]: https://github.com/Kong/insomnia
