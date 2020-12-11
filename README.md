@@ -10,6 +10,10 @@ RESTful API Development & Testing Using Spring Microservices
 
   `brew install openjdk`
 
++ Install [Insomnia REST client][1]
+
+  `brew cask install insomnia`
+
 + For the system Java wrappers to find this JDK, symlink it with Java in `Library/`
 
   `sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk`
@@ -42,7 +46,9 @@ RESTful API Development & Testing Using Spring Microservices
 
   `./src/test/java/com/spring/app/post_people.sh`
 
-+ Verify *POST* by sending a *GET* request to endpoint `api/v1/person`
++ Verify *POST* by sending a *GET* request to endpoint `api/v1/person` using Insomnia (output is formatted in JSON)
+  
+  OR by using `curl`:
 
   ```
   curl --include \
