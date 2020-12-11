@@ -49,6 +49,7 @@ RESTful API Development & Testing Using Spring Microservices
       "name": "Saurabh Mishra"
   }
   ```
+  (Result will be `200 OK`)
 
 [1]: https://github.com/Kong/insomnia
 [2]: https://start.spring.io/
