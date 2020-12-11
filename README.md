@@ -2,6 +2,8 @@
 
 RESTful API Development & Testing Using Spring Microservices
 
+![Application Functionality](src/docs/functionality.svg)
+
 ## Setup
 
 + Install OpenJDK
