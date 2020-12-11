@@ -54,6 +54,7 @@ RESTful API Development & Testing Using Spring Microservices
       --request GET \
       http://127.0.0.1:8080/api/v1/person
   ```
+  (Result will be `200 OK`)
 
 [1]: https://github.com/Kong/insomnia
 [2]: https://start.spring.io/
