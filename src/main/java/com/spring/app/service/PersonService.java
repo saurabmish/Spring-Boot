@@ -1,5 +1,7 @@
 package com.spring.app.service;
 
+import java.util.List;
+
 import com.spring.app.dao.PersonDao;
 import com.spring.app.model.Person;
 
@@ -19,5 +21,9 @@ public class PersonService {
 
     public int addPerson(Person person) {
         return personDao.insertPerson(person);
+    }
+
+    public List<Person> getAllPeople() {
+        return personDao.selectAllPeople();
     }
 }
