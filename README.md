@@ -40,13 +40,28 @@ RESTful API Development & Testing Using Spring Microservices
 
 ## Execution
 
-+ Execute `Application.java`
++ Execute `Application.java`:
+
+  `./mvnw spring-boot:run`
+
 
 + Send multiple JSON *POST* requests (using `curl`) to endpoint `api/v1/person`:
 
   `./src/test/java/com/spring/app/post_people.sh`
 
-+ Verify *POST* by sending a *GET* request to endpoint `api/v1/person` using Insomnia (output is formatted in JSON)
+  This script contains data in the following format:
+
+  ```
+  curl --verbose \
+    --header 'Content-Type: application/json' 'Accept: application/json' \
+    --data '
+        {
+            "name": "Adam"
+        }' \
+    http://127.0.0.1:8080/api/v1/person
+  ```
+
++ Verify *POST* by sending a *GET* request to endpoint `api/v1/person` using Insomnia (output is formatted)
   
   OR by using `curl`:
 
