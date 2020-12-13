@@ -32,9 +32,3 @@ curl --verbose \
             "name": "Hannah"
         }' \
     http://127.0.0.1:8080/api/v1/person
-
-
-curl --include \
-    --header 'Content-Type: application/json' 'Accept: application/json' \
-    --request GET \
-    http://127.0.0.1:8080/api/v1/person
