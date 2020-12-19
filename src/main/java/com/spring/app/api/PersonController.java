@@ -1,6 +1,7 @@
 package com.spring.app.api;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.spring.app.model.Person;
 import com.spring.app.service.PersonService;
@@ -31,5 +32,10 @@ public class PersonController {
     @GetMapping
     public List<Person> getAllPeople() {
         return personService.getAllPeople();
+    }
+
+    public Person getPersonById(UUID id) {
+        return personService.getPersonById(id)
+                .orElse(null);
     }
 }

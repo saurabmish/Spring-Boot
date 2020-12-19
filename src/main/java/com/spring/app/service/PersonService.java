@@ -1,6 +1,8 @@
 package com.spring.app.service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import com.spring.app.dao.PersonDao;
 import com.spring.app.model.Person;
@@ -25,5 +27,9 @@ public class PersonService {
 
     public List<Person> getAllPeople() {
         return personDao.selectAllPeople();
+    }
+
+    public Optional<Person> getPersonById(UUID id) {
+        return personDao.selectPersonById(id);
     }
 }
