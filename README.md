@@ -2,13 +2,23 @@
 
 RESTful API Development & Testing Using Spring Microservices
 
-![Application Functionality](src/docs/functionality.svg)
+<p align="center">
+  <img src="src/docs/functionality.svg" />
+</p>
 
 ## Setup
 
 + Install OpenJDK
 
   `brew install openjdk`
+
++ Install cURL
+
+  `brew install curl`
+
++ Install command-line JSON processor
+
+  `brew install jq`
 
 + Install [Insomnia REST client][1]
 
@@ -22,7 +32,7 @@ RESTful API Development & Testing Using Spring Microservices
 
   `export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home"`
 
-+ Bootstrap application with [Spring Initializr][1]
++ Bootstrap application with [Spring Initializr][2]
 
 + Technical Specifications:
 
@@ -40,19 +50,20 @@ RESTful API Development & Testing Using Spring Microservices
 
 ## Execution
 
-+ Execute `Application.java`:
++ Execute application:
 
   `./mvnw spring-boot:run`
 
 
-+ Send multiple JSON *POST* requests (using `curl`) to endpoint `api/v1/person`:
++ *POST* requests using `curl`:
 
   `./src/test/java/com/spring/app/post_people.sh`
 
-  This script contains data in the following format:
+  This script contains JSON data in the following format:
 
   ```
-  curl --verbose \
+  curl --request POST \
+    --verbose --include \
     --header 'Content-Type: application/json' 'Accept: application/json' \
     --data '
         {
@@ -61,15 +72,46 @@ RESTful API Development & Testing Using Spring Microservices
     http://127.0.0.1:8080/api/v1/person
   ```
 
-+ Verify *POST* by sending a *GET* request to endpoint `api/v1/person` using Insomnia (output is formatted)
-  
-  OR by using `curl`:
+
++ *GET* request:
+
+  (Using Insomnia will show formatted JSON output)
 
   ```
-  curl --include \
-      --header 'Content-Type: application/json' 'Accept: application/json' \
-      --request GET \
-      http://127.0.0.1:8080/api/v1/person
+  curl http://127.0.0.1:8080/api/v1/person
   ```
 
-[1]: https://start.spring.io/
+
++ *PUT* request:
+
+  Get a UUID since it is a required parameter. The below command gets the `id` of the first record, without quotes (because of the `-r` flag):
+
+  `uuid1=$(curl --silent http://127.0.0.1:8080/api/v1/person | jq -r '[.[].id] | .[0]')`
+
+  ```
+  curl --request PUT \
+    --verbose --include \
+    --header 'Content-Type: application/json' 'Accept: application/json' \
+    --data '
+        {
+            "name": "Monique"
+        }' \
+    http://127.0.0.1:8080/api/v1/person/$uuid1
+  ```
+
+
++ *DELETE* request:
+
+  This time, get the `id` of the third record:
+
+  `uuid3=$(curl --silent http://127.0.0.1:8080/api/v1/person | jq -r '[.[].id] | .[2]')`
+
+  ```
+  curl --request DELETE \
+    --verbose --include \
+    --header 'Content-Type: application/json' 'Accept: application/json' \
+    http://127.0.0.1:8080/api/v1/person/$uuid3
+  ```
+
+[1]: https://insomnia.rest/
+[2]: https://start.spring.io/
