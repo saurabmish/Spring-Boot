@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:15.0.1
+    steps:
+      - checkout
+      - run:
+          name: Verify java version
+          command: java --version
+      - run:
+          name: Install project dependencies
+          command: ./mvnw clean install
