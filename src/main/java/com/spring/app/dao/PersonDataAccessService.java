@@ -33,14 +33,26 @@ public class PersonDataAccessService implements PersonDao {
 
     @Override
     public int deletePersonById(UUID id) {
-        // TODO Auto-generated method stub
-        return 0;
+        Optional<Person> person = selectPersonById(id);
+        if (person.isEmpty()) {
+            return 0;
+        } else {
+            DB.remove(person.get());
+            return 1;
+        }
     }
 
     @Override
-    public int updatePersonById(UUID id, Person person) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int updatePersonById(UUID id, Person update) {
+        return selectPersonById(id)
+            .map(person -> {
+                int indexOfPersonToUpdate = DB.indexOf(person);
+                if (indexOfPersonToUpdate >= 0) {
+                    DB.set(indexOfPersonToUpdate, new Person(id, update.getName()));
+                    return 1;
+                }
+                return 0;
+            })
+            .orElse(0);
     }
-
 }
