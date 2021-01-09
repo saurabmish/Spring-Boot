@@ -50,7 +50,7 @@ RESTful API Development & Testing Using Spring Microservices
 
 ## Execution
 
-+ Execute application:
++ Execute application with Maven:
 
   `./mvnw spring-boot:run`
 
@@ -89,6 +89,8 @@ RESTful API Development & Testing Using Spring Microservices
 
   `uuid1=$(curl --silent http://127.0.0.1:8080/api/v1/person | jq -r '[.[].id] | .[0]')`
 
+  Pass the variable using the below `curl` command:
+
   ```
   curl --request PUT \
     --verbose --include \
@@ -106,6 +108,8 @@ RESTful API Development & Testing Using Spring Microservices
   This time, get the `id` of the third record:
 
   `uuid3=$(curl --silent http://127.0.0.1:8080/api/v1/person | jq -r '[.[].id] | .[2]')`
+
+  Pass the variable using the below `curl` command:
 
   ```
   curl --request DELETE \
