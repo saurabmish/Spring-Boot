@@ -1,4 +1,5 @@
-curl --verbose \
+curl --request POST \
+    --verbose --include \
     --header 'Content-Type: application/json' 'Accept: application/json' \
     --data '
         {
@@ -7,7 +8,8 @@ curl --verbose \
     http://127.0.0.1:8080/api/v1/person
 
 
-curl --verbose \
+curl --request POST \
+    --verbose --include \
     --header 'Content-Type: application/json' 'Accept: application/json' \
     --data '
         {
@@ -16,7 +18,8 @@ curl --verbose \
     http://127.0.0.1:8080/api/v1/person
 
 
-curl --verbose \
+curl --request POST \
+    --verbose --include \
     --header 'Content-Type: application/json' 'Accept: application/json' \
     --data '
         {
@@ -25,7 +28,8 @@ curl --verbose \
     http://127.0.0.1:8080/api/v1/person
 
 
-curl --verbose \
+curl --request POST \
+    --verbose --include \
     --header 'Content-Type: application/json' 'Accept: application/json' \
     --data '
         {
